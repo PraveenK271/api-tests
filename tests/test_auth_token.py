@@ -156,5 +156,5 @@ def test_sensitive_fields_returned_in_response(auth_context):
     assert response.status == 200
     body = response.json()
     leaked = TOP_LEVEL & set(body.keys())
-    leaked_bank = NESTED_BANK & set(body.get("bank", {}).keys())
+    leaked_bank = NESTED_LEVEL & set(body.get("bank", {}).keys())
     assert not (leaked | leaked_bank), f"Exposed: {leaked | leaked_bank}"
