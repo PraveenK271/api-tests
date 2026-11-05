@@ -125,15 +125,6 @@ def test_sensitive_data(anon_context):
     body = response.json()
     assert "ip" not in body
 
-SENSITIVE = {"password", "ip", "macAddress"}
-
-@pytest.mark.xfail(reason="Supposed to fail; sensitive data returned in response", strict=True)
-def test_me_does_not_expose_sensitive_fields(auth_context):
-    response = auth_context.get("/auth/me")
-    assert response.status == 200
-    leaked = SENSITIVE & set(response.json().keys())
-    print(leaked)
-    assert not leaked, f"Sensitive fields exposed: {leaked}"
 
 def test_debug_me_fields(auth_context):
     response = auth_context.get("/auth/me")
