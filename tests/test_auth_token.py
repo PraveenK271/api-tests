@@ -147,7 +147,7 @@ def test_debug_me_fields(anon_context):
     print(list(response.json().keys()))
     print(response.json().get("bank"))
 
-TOP_LEVEL = {"password", "ip", "macAddress"}
+TOP_LEVEL = {"password", "ip", "macAddress","ssn","ein"}
 NESTED_LEVEL = {"cardExpire","cardNumber","cardType","iban"}
 
 @pytest.mark.xfail(reason="Supposed to fail; sensitive data returned in response", strict=True)
