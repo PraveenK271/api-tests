@@ -3,3 +3,4 @@
    pytest-playwright
    jsonschema
    requests-mock
+   pytest-html
