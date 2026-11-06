@@ -13,10 +13,10 @@
              python-version: '3.14'
          - run: pip install -r requirements.txt
          - run: pytest -v
+         - run: pytest -v --html=report.html --self-contained-html
            env:
              API_USERNAME: ${{ secrets.API_USERNAME }}
              API_PASSWORD: ${{ secrets.API_PASSWORD }}
-         - run: pytest -v --html=report.html --self-contained-html
          - uses: actions/upload-artifact@v4
            if: always()
            with:
